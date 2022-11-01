@@ -5,9 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        DB_NAME: ${DB_NAME}
-    # image: appcelerator/prometheus
-    # command: ["--version"]
+        PROMETHEUS_VERSION: ${PROMETHEUS_VERSION}
     ports:
       - "9090:9090"
     restart: unless-stopped
