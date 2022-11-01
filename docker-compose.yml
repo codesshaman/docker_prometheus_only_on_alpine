@@ -1,0 +1,14 @@
+version: '2'
+services:
+  prometheus:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        DB_NAME: ${DB_NAME}
+    # image: appcelerator/prometheus
+    # command: ["--version"]
+    ports:
+      - "9090:9090"
+    restart: unless-stopped
+    container_name: prometheus
