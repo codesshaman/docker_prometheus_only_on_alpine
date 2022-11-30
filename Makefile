@@ -53,4 +53,4 @@ fclean:
 	# @docker network prune --force
 	# @docker volume prune --force
 
-.PHONY	: all help build down re clean fclean
+.PHONY	: all help build down re ps clean fclean
