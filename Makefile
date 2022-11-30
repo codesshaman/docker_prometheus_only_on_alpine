@@ -38,6 +38,10 @@ re:	down
 	@printf "$(OK_COLOR)==== Rebuild configuration ${name}... ====$(NO_COLOR)\n"
 	@docker-compose -f ./docker-compose.yml up -d --build
 
+ps:
+	@printf "$(ERROR_COLOR)==== View configuration ${name}... ====$(NO_COLOR)\n"
+	@docker-compose -f ./docker-compose.yml ps
+
 clean: down
 	@printf "$(ERROR_COLOR)==== Cleaning configuration ${name}... ====$(NO_COLOR)\n"
 	@docker system prune -a
