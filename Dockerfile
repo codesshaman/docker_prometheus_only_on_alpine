@@ -18,11 +18,15 @@ RUN echo "===> Downloading prometheus..."                           && \
     rm -rf /${PROMETHEUS_TAR_FULLNAME}
 ADD config/prometheus.yml /prometheus/prometheus.yml
 
-RUN echo "===> Download and install python..."                      && \
-    apk add --no-cache python3                                      && \
-    python3 -m ensurepip                                            && \
-    pip3 install --no-cache --upgrade pip setuptools wheel          && \
-    pip3 install awscli --upgrade
+RUN echo "===> Download and install python..." && \
+    apk add --no-cache \
+    python3 \
+    py3-pip \
+    py3-virtualenv && \
+    python3 -m venv /opt/venv && \
+    . /opt/venv/bin/activate && \
+    pip install --upgrade pip setuptools wheel && \
+    pip install awscli
 
 EXPOSE 9090
 
