@@ -11,7 +11,6 @@ services:
     ports:
       - "$PROMETHEUS_PORT:9090"
     restart: unless-stopped
-    container_name: prometheus
   networks:
       network:
         ipv4_address: $PROMETHEUS_HOST
