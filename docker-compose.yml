@@ -1,12 +1,27 @@
-version: '3'
+---
+
 services:
   prometheus:
+    container_name: $PROMETHEUS_CONTAINER_NAME
     build:
       context: .
       dockerfile: Dockerfile
       args:
-        PROMETHEUS_VERSION: ${PROMETHEUS_VERSION}
+        PROMETHEUS_VERSION: $PROMETHEUS_VERSION
     ports:
-      - "9090:9090"
+      - "$PROMETHEUS_PORT:9090"
     restart: unless-stopped
     container_name: prometheus
+  networks:
+      network:
+        ipv4_address: $PROMETHEUS_HOST
+
+
+networks:
+  network:
+    driver: bridge
+    name: $PROMETHEUS_NETWORK
+    ipam:
+      config:
+        - subnet: $PROMETHEUS_ADDRES
+          gateway: $PROMETHEUS_GATEWAY
