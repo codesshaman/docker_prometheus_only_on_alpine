@@ -11,7 +11,7 @@ services:
     ports:
       - "$PROMETHEUS_PORT:9090"
     restart: unless-stopped
-  networks:
+    networks:
       network:
         ipv4_address: $PROMETHEUS_HOST
 
